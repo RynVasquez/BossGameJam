@@ -6,9 +6,10 @@ using UnityEngine;
 public class JesterSpinScript : MonoBehaviour
 {
     public float JesterSpeed;
-    [SerializeField] GameObject target;
+    [SerializeField] Transform target;
     [SerializeField] GameObject bomb;
     [SerializeField] GameObject turret;
+    [SerializeField] float rotateSpeed = 10f;
     [SerializeField] float _attackSpeed = 2.0f;
     private float _attackTime;
 
@@ -21,7 +22,8 @@ public class JesterSpinScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(LaunchBombs());
+        //StartCoroutine(LaunchBombs());
+        transform.RotateAround(target.position, Vector3.up, rotateSpeed * Time.deltaTime);
         transform.Rotate(0f, JesterSpeed * Time.deltaTime, 0f, Space.Self);
 
     }
