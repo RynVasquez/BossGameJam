@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 7239501724240133675}
   - component: {fileID: 3283769834722943658}
   - component: {fileID: 3364651075673323244}
+  - component: {fileID: 1798906560690459127}
   - component: {fileID: 5951572586555137680}
   m_Layer: 0
   m_Name: Player
@@ -206,6 +207,32 @@ MonoBehaviour:
   staminaRegenRate: 15
   rollStaminaCost: 30
   runStaminaDrainRate: 15
+--- !u!114 &1798906560690459127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3759730279754399755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c179c3d5906d084b9f3cebb08c9e57d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacks:
+  - name: light
+    duration: 1
+    coyoteTimeWindow: 0.2
+    input: 323
+    mouseButton: -1
+  - name: heavy
+    duration: 1
+    coyoteTimeWindow: 0.25
+    input: 324
+    mouseButton: -2
+  showDebugLogs: 1
+  attackLayerWeight: 1
+  layerTransitionSpeed: 10
 --- !u!95 &5951572586555137680
 Animator:
   serializedVersion: 5
@@ -360,7 +387,7 @@ PrefabInstance:
     - target: {fileID: 1351255403870888949, guid: 524d0489030e6304ba1b95a140a294ff,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.022151291
+      value: -0.02215129
       objectReference: {fileID: 0}
     - target: {fileID: 1351255403870888949, guid: 524d0489030e6304ba1b95a140a294ff,
         type: 3}
@@ -420,7 +447,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 829432462074411359, guid: 524d0489030e6304ba1b95a140a294ff,
+        type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 4181236566650602508}
   m_SourcePrefab: {fileID: 100100000, guid: 524d0489030e6304ba1b95a140a294ff, type: 3}
 --- !u!4 &2610465616046018469 stripped
 Transform:
@@ -428,3 +459,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3961658063865670736}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4429324777695024399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 829432462074411359, guid: 524d0489030e6304ba1b95a140a294ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 3961658063865670736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4181236566650602508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4429324777695024399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f882df2b2e05428488272182f6ada20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 25

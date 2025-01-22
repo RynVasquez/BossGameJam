@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     private PlayerCamera cameraController;
     private Animator anim;
+    private PlayerCombat playerCombat;
+
     private Vector3 movementVelocity;
     private float verticalVelocity;
     private Vector3 rollDirection;
@@ -48,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         cameraController = Camera.main.GetComponent<PlayerCamera>();
         anim = GetComponent<Animator>();
+        playerCombat = GetComponent<PlayerCombat>();
         
         if (cameraController != null)
             cameraController.SetTarget(transform);
@@ -67,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void HandleMovement()
     {
-        if (isRolling) return;
+        if (isRolling || (playerCombat != null && playerCombat.IsAttacking())) return;
         
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -140,6 +143,8 @@ public class PlayerMovement : MonoBehaviour
     
     private void HandleRolling()
     {
+        if(playerCombat != null && playerCombat.IsInCommittedAttack()) return;
+
         if (Input.GetKeyDown(KeyCode.Space) && !isRolling && currentStamina >= rollStaminaCost)
         {
             isRolling = true;
